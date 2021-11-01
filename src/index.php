@@ -7,7 +7,7 @@
 
 <script>
     function reload() {
-        location.reload();
+        location.replace('');
     }
     window.addEventListener('load', () => {
         let id = setInterval(reload, 2000);
