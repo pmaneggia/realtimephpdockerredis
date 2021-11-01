@@ -8,6 +8,6 @@
 Sum:
 <?php
 $counter = file_get_contents("counter") + $_REQUEST["x"];
-file_put_contents($counter);
+file_put_contents("counter", $counter);
 echo($counter);
 ?>
