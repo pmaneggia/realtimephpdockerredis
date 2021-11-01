@@ -9,10 +9,10 @@
     function reload() {
         location.reload();
     }
-    document.addEventListener('load', () => {
+    window.addEventListener('load', () => {
         let id = setInterval(reload, 2000);
 
-        window.querySelector('input').addEventListener('keyup', () => {
+        document.querySelector('input').addEventListener('keyup', () => {
             clearInterval(id);
             id = setInterval(reload, 2000);
         });
