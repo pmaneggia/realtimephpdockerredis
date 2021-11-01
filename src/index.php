@@ -12,7 +12,7 @@
     document.addEventListener('load', () => {
         let id = setInterval(reload, 2000);
 
-        documemt.querySelector('input').addEventListener('keyup', () => {
+        window.querySelector('input').addEventListener('keyup', () => {
             clearInterval(id);
             id = setInterval(reload, 2000);
         });
