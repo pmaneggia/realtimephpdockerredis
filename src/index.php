@@ -6,22 +6,15 @@
 </form>
 
 <script>
-    function reload() {
-        location.replace('');
-    }
-
     function loadChat() {
-        fetch('/chat.php').then(r => r.text()).then(console.log);
+        fetch('/chat.php')
+            .then(r => r.ok ? r.text() : Promise.reject())
+            .then(s => document.querySelector('ul').innerHTML = s);
     }
 
     window.addEventListener('load', () => {
-        /* let id = setInterval(reload, 2000);
-
-        document.querySelector('input').addEventListener('keyup', () => {
-            clearInterval(id);
-            id = setInterval(reload, 2000);
-        }); */
         loadChat();
+        setInterval(loadChat, 500);
         console.log('loaded');
     });
 </script>
