@@ -1,3 +1,10 @@
+<?php
+$user = $_COOKIE['user'];
+if (!$user) {
+    $user = uniqid();
+    setcookie('user', $user);
+}
+?>
 <h1>Hello Php</h1>
 
 <form method="POST">
@@ -27,6 +34,6 @@ $msg = $_REQUEST['msg'];
 if ($msg) {
     $redis = new Redis();
     $redis->connect('redis');
-    $redis->lpush('chat', $msg);
+    $redis->lpush('chat', $user . ':' . $msg);
 }
 ?>
