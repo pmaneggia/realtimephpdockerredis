@@ -9,6 +9,11 @@
     function reload() {
         location.replace('');
     }
+
+    function loadChat() {
+        fetch('/chat.php').then(r => console.log(r.body));
+    }
+
     window.addEventListener('load', () => {
         let id = setInterval(reload, 2000);
 
@@ -21,18 +26,13 @@
 </script>
 
 Chat:
-<?php
-$redis = new Redis();
-$redis->connect('redis');
+<ul></ul>
 
+<?php
 $msg = $_REQUEST['msg'];
 if ($msg) {
+    $redis = new Redis();
+    $redis->connect('redis');
     $redis->lpush('chat', $msg);
 }
-
-echo('<ul>');
-foreach ($redis->lrange('chat', 0, -1) as $m) {
-    echo('<li>' . $m. '</li>');
-}
-echo('</ul>');
 ?>

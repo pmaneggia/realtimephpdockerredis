@@ -4,3 +4,5 @@
 * add storage in local file to build an app that sum numbers posted by the client
 * add redis persistence
 * turn this into a chat application
+    * using very basic short polling: setInterval and clearInterval to prevent a bit being refreshed while typing.
+    * Ajax: 
