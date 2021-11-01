@@ -11,7 +11,7 @@
     }
 
     function loadChat() {
-        fetch('/chat.php').then(r => console.log(r.body));
+        fetch('/chat.php').then(r => r.text()).then(console.log);
     }
 
     window.addEventListener('load', () => {
