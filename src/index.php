@@ -1,7 +1,7 @@
 <h1>Hello Php</h1>
 
 <form method="POST">
-    <input type="number" name="x">
+    <input name="msg">
     <button type="submit">Send</button>
 </form>
 
@@ -9,7 +9,15 @@ Sum:
 <?php
 $redis = new Redis();
 $redis->connect('redis');
-$counter = $redis->get('counter') + $_REQUEST["x"];
-$redis->set('counter', $counter);
-echo($counter);
+
+$msg = $_REQUEST['msg'];
+if ($msg) {
+    $redis->lpush('chat', $msg);
+}
+
+echo('<ul>');
+foreach ($redis->lrange('chat', 0, -1) as $m) {
+    echo('<li>' . $m. '</li>');
+}
+echo('</ul>');
 ?>
