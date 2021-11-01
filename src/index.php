@@ -2,6 +2,8 @@
 
 <form method="POST">
     <input type="number" name="x">
-    <button type="submit" value="send"></button>
+    <button type="submit">Send</button>
 </form>
-<?= $_REQUEST["x"] + 1 ?>
+
+Sum:
+<?php echo($_REQUEST["x"] + 1) ?>
