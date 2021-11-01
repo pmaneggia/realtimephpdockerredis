@@ -5,7 +5,22 @@
     <button type="submit">Send</button>
 </form>
 
-Sum:
+<script>
+    function reload() {
+        location.reload();
+    }
+    document.addEventListener('load', () => {
+        let id = setInterval(reload, 2000));
+
+        documemt.querySelector('input').addEventListener('keyup', () => {
+            clearInterval(id);
+            id = setInterval(reload, 2000);
+        });
+        console.log('loaded');
+    });
+</script>
+
+Chat:
 <?php
 $redis = new Redis();
 $redis->connect('redis');
