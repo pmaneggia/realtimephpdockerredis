@@ -6,4 +6,8 @@
 </form>
 
 Sum:
-<?php echo($_REQUEST["x"] + 1) ?>
+<?php
+$counter = file_get_contents("counter") + $_REQUEST["x"];
+file_put_contents($counter);
+echo($counter);
+?>
