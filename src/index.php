@@ -10,7 +10,7 @@
         location.reload();
     }
     document.addEventListener('load', () => {
-        let id = setInterval(reload, 2000));
+        let id = setInterval(reload, 2000);
 
         documemt.querySelector('input').addEventListener('keyup', () => {
             clearInterval(id);
