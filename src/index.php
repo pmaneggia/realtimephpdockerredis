@@ -10,6 +10,7 @@ Sum:
 $counter = file_get_contents("counter") + $_REQUEST["x"];
 file_put_contents("counter", $counter);
 echo($counter);
-$redis = new Redis(['host' => 'redis']);
+$redis = new Redis();
+$redis->connect('redis');
 echo($redis->ping());
 ?>
