@@ -15,12 +15,13 @@
     }
 
     window.addEventListener('load', () => {
-        let id = setInterval(reload, 2000);
+        /* let id = setInterval(reload, 2000);
 
         document.querySelector('input').addEventListener('keyup', () => {
             clearInterval(id);
             id = setInterval(reload, 2000);
-        });
+        }); */
+        loadChat();
         console.log('loaded');
     });
 </script>
