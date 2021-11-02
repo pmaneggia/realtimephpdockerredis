@@ -16,7 +16,7 @@ if (!$user) {
     function loadChat() {
         fetch('/chat.php')
             .then(r => r.ok ? r.text() : Promise.reject())
-            .then(s => document.querySelector('.chat').appendChild(generateChatItems(JSON.parse(s))));
+            .then(s => document.querySelector('.chat').replaceChildren(generateChatItems(JSON.parse(s))));
     }
 
     function generateChatItems(msgList) {
