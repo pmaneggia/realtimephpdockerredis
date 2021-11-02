@@ -13,6 +13,8 @@ if (!$user) {
 </form>
 
 <script>
+    let colors = ['#2f7882', '#8d9261', '#d9aa28', '#ed9678'];
+
     function loadChat() {
         fetch('/chat.php')
             .then(r => r.ok ? r.text() : Promise.reject())
@@ -23,6 +25,7 @@ if (!$user) {
         let list = document.createElement('ul');
         msgList.forEach(i => {
             let listElement = document.createElement('li');
+            listElement.style.color = colors[parseInt(i.user, 16) % 4]; 
             listElement.appendChild(document.createTextNode(i.msg));
             list.appendChild(listElement);
         });
