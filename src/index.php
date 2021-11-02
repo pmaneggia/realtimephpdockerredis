@@ -34,6 +34,6 @@ $msg = $_REQUEST['msg'];
 if ($msg) {
     $redis = new Redis();
     $redis->connect('redis');
-    $redis->lpush('chat', $user . ':' . $msg);
+    $redis->lpush('chat', json_encode(['user' => $user, 'msg' => $msg]));
 }
 ?>
