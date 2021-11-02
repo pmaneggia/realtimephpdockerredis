@@ -16,8 +16,14 @@ if (!$user) {
     function loadChat() {
         fetch('/chat.php')
             .then(r => r.ok ? r.text() : Promise.reject())
-            .then(s => {console.log(JSON.parse(s));
-                document.querySelector('ul').innerHTML = s});
+            .then(s => {console.log(generateChatItem(JSON.parse(s)));
+                document.querySelector('ul').innerHTML = generateChatItem(JSON.parse(s))});
+    }
+
+    function generateChatItem(s) {
+        let listElement = document.createElement('li');
+        listElement.append(document.createTextNode(s.msg));
+        return listElement;
     }
 
     window.addEventListener('load', () => {
