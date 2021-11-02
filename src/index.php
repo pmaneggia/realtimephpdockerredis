@@ -26,7 +26,7 @@ if (!$user) {
             listElement.appendChild(document.createTextNode(i.msg));
             list.appendChild(listElement);
         });
-        return listt;
+        return list;
     }
 
     window.addEventListener('load', () => {
