@@ -16,14 +16,17 @@ if (!$user) {
     function loadChat() {
         fetch('/chat.php')
             .then(r => r.ok ? r.text() : Promise.reject())
-            .then(s => {console.log(generateChatItem(JSON.parse(s)));
-                document.querySelector('ul').innerHTML = generateChatItem(JSON.parse(s))});
+            .then(s => document.querySelector('.chat').appendChild(generateChatItems(JSON.parse(s))));
     }
 
-    function generateChatItem(s) {
-        let listElement = document.createElement('li');
-        listElement.append(document.createTextNode(s.msg));
-        return listElement;
+    function generateChatItems(msgList) {
+        let list = document.createElement('ul');
+        msgList.forEach(i => {
+            let listElement = document.createElement('li');
+            listElement.appendChild(document.createTextNode(i.msg));
+            list.appendChild(listElement);
+        });
+        return listt;
     }
 
     window.addEventListener('load', () => {
@@ -34,7 +37,7 @@ if (!$user) {
 </script>
 
 Chat:
-<ul></ul>
+<div class="chat"></div>
 
 <?php
 $msg = $_REQUEST['msg'];
